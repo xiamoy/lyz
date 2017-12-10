@@ -23,7 +23,6 @@ import org.springframework.data.redis.core.RedisTemplate;
 public class RedisCacheConfig extends CachingConfigurerSupport {
 	
 	private volatile JedisConnectionFactory mJedisConnectionFactory;
-//	private volatile RedisTemplate<String, Object> mRedisTemplate;
 	private volatile RedisTemplate<String, String> mRedisTemplate;
 	private volatile RedisCacheManager mRedisCacheManager;
 	

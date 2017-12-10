@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>Hellow w</h1>
+<h1>Hello Index</h1>
+
 </body>
 </html>
