@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.lyz.user.dao.UserDao" >
+<mapper namespace="com.lyz.user.mapper.UserMapper" >
 
     <!-- 插入一条城市记录 -->
     <insert id="saveUser" parameterType="com.lyz.user.bean.User">
@@ -14,17 +14,17 @@
     </select>
     
     <!-- 根据 city_code 查找城市信息 -->
-    <select id="getById" resultType="com.lyz.user.bean.User" parameterType="java.lang.Integer">
+    <select id="getUserById" resultType="com.lyz.user.bean.User" parameterType="java.lang.Integer">
     	select u.id, u.name, u.sex, u.age from user u where u.id = #{id}
     </select>
     
     <!-- 重命名城市 -->  
-    <update id="rename" parameterType="com.lyz.user.bean.User">
+    <update id="renameUser" parameterType="com.lyz.user.bean.User">
     	update user set name = #{name} where id = #{id}
     </update>  
     
     <!-- 删除一个城市记录 -->  
-    <delete id="deleteById" parameterType="java.lang.Integer">  
+    <delete id="deleteUserById" parameterType="java.lang.Integer">  
         delete from user where id = #{id}  
     </delete>  
 </mapper>
