@@ -10,6 +10,8 @@ import com.lyz.user.bean.User;
  *
  */
 public interface UserDao {
+	
+	User findUser(String username,String password);
 	 /**
      * 保存用户
      * @param user

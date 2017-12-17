@@ -10,11 +10,14 @@ import com.lyz.user.bean.User;
  *
  */
 public interface UserService {
+	
+	User findUser(String username,String password);
+	
 	 /**
      * 保存用户
      * @param user
      */
-    void saveUser(String name, String sex, Integer age);
+    void saveUser(String username, String password, String name,String email);
 	
 	/**
 	 * 获取所有用户列表
@@ -33,7 +36,7 @@ public interface UserService {
 	 * 更新用户的名称
 	 * @param user
 	 */
-	void renameUser(String name, Integer id);
+	void renameUser(String name, String id);
 	
 	/**
 	 * 根据id删除指定的用户

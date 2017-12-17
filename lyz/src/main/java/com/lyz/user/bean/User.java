@@ -20,75 +20,91 @@ public class User implements Serializable{
 	/**
 	 * id
 	 */
-	private Integer id;
+//	private Integer uid;
+	private String uid;
 	
-	/**
-	 * 姓名
-	 */
+	private String username;
+	private String password;
 	private String name;
+	private String email;
+	private String code;
+	private int state;
 	
-	/**
-	 * 性别
-	 */
-	private String sex;
-	
-	/**
-	 * 年龄
-	 */
-	private Integer age;
-
-	public User() {
+	public User(){
 		super();
 	}
 	
-	public User(Integer id, String name) {
+	public User( String username, String password, String name,
+			String email) {
 		super();
-		this.id = id;
+		this.username = username;
+		this.password = password;
 		this.name = name;
+		this.email = email;
 	}
-
-	public User(String name, String sex, Integer age) {
-		super();
+	
+	
+	public User(String uid,String name) {
+		this.uid = uid;
 		this.name = name;
-		this.sex = sex;
-		this.age = age;
-	}
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
 	}
 
 	public String getName() {
 		return name;
 	}
-
 	public void setName(String name) {
 		this.name = name;
 	}
-
-	public String getSex() {
-		return sex;
+	public int getState() {
+		return state;
 	}
-
-	public void setSex(String sex) {
-		this.sex = sex;
+	public void setState(int state) {
+		this.state = state;
 	}
-
-	public Integer getAge() {
-		return age;
+	public String getCode() {
+		return code;
 	}
-
-	public void setAge(Integer age) {
-		this.age = age;
+	public void setCode(String code) {
+		this.code = code;
 	}
-
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
+//	public Integer getUid() {
+//		return uid;
+//	}
+//	public void setUid(Integer uid) {
+//		this.uid = uid;
+//	}
+	public String getUid() {
+		return uid;
+	}
+	public void setUid(String uid) {
+		this.uid = uid;
+	}
+	
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", name=" + name + ", sex=" + sex + ", age=" + age + "]";
+		return "User [uid=" + uid + ", username=" + username + ", password="
+				+ password + ", name=" + name + ", email=" + email + ", code="
+				+ code + ", state=" + state + "]";
 	}
+	
 	
 }

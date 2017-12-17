@@ -2,13 +2,17 @@ package com.lyz.user.controller;
 
 import java.util.List;
 
+import javax.security.auth.login.LoginContext;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.lyz.user.bean.User;
 import com.lyz.user.service.UserService;
@@ -22,23 +26,33 @@ import com.lyz.user.service.UserService;
 @RequestMapping("/user")
 public class UserController {
 	private final Log logger = LogFactory.getLog(this.getClass());
+	
 	@Autowired
 	private UserService mUserService;
 	
+	@RequestMapping("/login")
+	public String login(@RequestParam(value="username", defaultValue="") String username,
+			@RequestParam(value="password", defaultValue="") String password){
+		logger.debug(username);
+		User user = mUserService.findUser(username, password);
+		logger.info("user login:"+user);
+		if(user==null){
+			return "error";
+		}else{
+			return "success";
+		}
+	}
+	
 	/**
 	 * 保存用户
-	 * @param name
-	 * @param sex
-	 * @param age
-	 * @return
 	 */
 	@RequestMapping("/save")
 	@ResponseBody
-	public Integer save(@RequestParam(value="name", defaultValue="") String name,
-			@RequestParam(value="sex", defaultValue="") String sex,
-			@RequestParam(value="age", defaultValue="0") String age){
+	public Integer save(@RequestParam(value="username", defaultValue="") String username,
+			@RequestParam(value="password", defaultValue="") String password,@RequestParam(value="name") String name,
+			@RequestParam(value="email", defaultValue="") String email){
 		logger.debug(name);
-		mUserService.saveUser(name, sex, Integer.parseInt(age));
+		mUserService.saveUser(username,password,name, email);
 		return 1;
 	}
 	
@@ -76,7 +90,7 @@ public class UserController {
 	public Integer renameUser(@RequestParam(value="id", defaultValue="0") String id, 
 							 @RequestParam(value="name", defaultValue="") String name){
 		logger.debug(id + "=========" + name);
-		mUserService.renameUser(name, Integer.parseInt(id));
+		mUserService.renameUser(name, id);
 		return 1;
 	}
 	/**
