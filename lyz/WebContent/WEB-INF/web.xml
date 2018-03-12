@@ -9,9 +9,32 @@
 		<param-name>contextConfigLocation</param-name>
 		<param-value>classpath:spring-mybatis.xml</param-value>
 	</context-param>
+	  
+	<!-- login filter -->
+	<!-- <filter>
+	    <filter-name>LoginFilter</filter-name>
+	    <filter-class>com.lyz.user.LoginFilter</filter-class>
+	    <init-param>
+	        <description>检查失败后需要定向到的页面</description>
+	        <param-name>redirectURL</param-name>
+	        <param-value>login.jsp</param-value>
+	    </init-param>
+	    
+	    <init-param>
+	        <description>不用检查用户的页面列表，用","分隔</description>
+	        <param-name>notCheckURLList</param-name>
+	        <param-value>index.jsp,login.jsp,jsp/success.jsp</param-value>
+	     </init-param>
+	    
+	 </filter>
+	<filter-mapping>
+	    <filter-name>LoginFilter</filter-name>
+	    <url-pattern>/*</url-pattern>
+	</filter-mapping>  -->
+	 
 	
+	 <filter>
 	<!-- character encoding related.....start --><!-- TODO : 将 encodingFilter、sysParamsFilter 两个过滤器交给 spring 管理 -->
-	<filter>
 		<filter-name>encodingFilter</filter-name>
 		<filter-class>
 		        org.springframework.web.filter.CharacterEncodingFilter 
@@ -37,6 +60,45 @@
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 
+	<!-- config default to handle static resources in project -->
+	<servlet-mapping>  
+            <servlet-name>default</servlet-name>  
+            <url-pattern>*.css</url-pattern>  
+    </servlet-mapping>
+    <servlet-mapping>  
+            <servlet-name>default</servlet-name>  
+            <url-pattern>*.gif</url-pattern>  
+    </servlet-mapping>
+    <servlet-mapping>  
+            <servlet-name>default</servlet-name>  
+            <url-pattern>*.jpg</url-pattern>  
+    </servlet-mapping>
+    <servlet-mapping>  
+            <servlet-name>default</servlet-name>  
+            <url-pattern>*.png</url-pattern>  
+    </servlet-mapping>  
+    <servlet-mapping>  
+            <servlet-name>default</servlet-name>  
+            <url-pattern>*.js</url-pattern>  
+    </servlet-mapping>  
+    <servlet-mapping> 
+            <servlet-name>default</servlet-name> 
+            <url-pattern>*.html</url-pattern> 
+    </servlet-mapping>
+    <servlet-mapping>  
+            <servlet-name>default</servlet-name>  
+            <url-pattern>*.woff2</url-pattern>  
+    </servlet-mapping>  
+    <servlet-mapping>  
+            <servlet-name>default</servlet-name>  
+            <url-pattern>*.woff</url-pattern>  
+    </servlet-mapping>
+    <servlet-mapping> 
+            <servlet-name>default</servlet-name> 
+            <url-pattern>*.ttf</url-pattern> 
+    </servlet-mapping>
+	
+    <!-- config DispatcherServlet to handle request -->
 	<servlet>
 		<servlet-name>lyzmvc</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -49,9 +111,8 @@
 	<servlet-mapping>
 		<servlet-name>lyzmvc</servlet-name>
 		<url-pattern>/</url-pattern>
-		<!-- <url-pattern>*.json</url-pattern>
-		<url-pattern>*.html</url-pattern> -->
 	</servlet-mapping>
+	
 	
 	<welcome-file-list>
 	    <welcome-file>index.jsp</welcome-file>

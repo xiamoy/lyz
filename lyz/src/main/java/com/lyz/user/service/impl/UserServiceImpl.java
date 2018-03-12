@@ -30,10 +30,10 @@ public class UserServiceImpl implements UserService {
 	
 	@Override
 	@CacheEvict(value = { "saveUser"}, allEntries = true)
-	public void saveUser(String username, String password, String name,String email) {
-		User user = new User(username,password,name,email);
+	public void saveUser(User user) {
 		mUserDao.saveUser(user);
 	}
+	
 
 	@Override
 	@Cacheable("getAllUser")
@@ -43,25 +43,24 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	@Cacheable("getUserById")
-	public User getUserById(Integer id) {
-		return mUserDao.getById(id);
+	public User getUserByName(String username) {
+		return mUserDao.getByName(username);
+	}
+
+	@Override
+	@CacheEvict(value = { "getAllUser", "getUserByName" }, allEntries = true)
+	public void renameUser(String name, String username) {
+		mUserDao.rename(new User(username, name));
 	}
 
 	@Override
 	@CacheEvict(value = { "getAllUser", "getUserById" }, allEntries = true)
-	public void renameUser(String name, String id) {
-		mUserDao.rename(new User(id, name));
-	}
-
-	@Override
-	@CacheEvict(value = { "getAllUser", "getUserById" }, allEntries = true)
-	public void deleteUserById(Integer id) {
-		mUserDao.deleteById(id);
+	public void deleteUserByName(String username) {
+		mUserDao.deleteByName(username);
 	}
 
 	@Override
 	public User findUser(String username, String password) {
-		
 		return mUserDao.findUser(username, password);
 	}
 

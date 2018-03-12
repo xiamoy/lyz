@@ -27,26 +27,17 @@ public class User implements Serializable{
 	private String password;
 	private String name;
 	private String email;
+	private long telephone;
 	private String code;
 	private int state;
 	
 	public User(){
 		super();
 	}
-	
-	public User( String username, String password, String name,
-			String email) {
-		super();
+		
+	public User(String username,String password) {
 		this.username = username;
 		this.password = password;
-		this.name = name;
-		this.email = email;
-	}
-	
-	
-	public User(String uid,String name) {
-		this.uid = uid;
-		this.name = name;
 	}
 
 	public String getName() {
@@ -99,12 +90,21 @@ public class User implements Serializable{
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
+	public long getTelephone() {
+		return telephone;
+	}
+
+	public void setTelephone(long telephone) {
+		this.telephone = telephone;
+	}
+
 	@Override
 	public String toString() {
 		return "User [uid=" + uid + ", username=" + username + ", password="
-				+ password + ", name=" + name + ", email=" + email + ", code="
-				+ code + ", state=" + state + "]";
+				+ password + ", name=" + name + ", email=" + email
+				+ ", telephone=" + telephone + ", code=" + code + ", state="
+				+ state + "]";
 	}
-	
 	
 }

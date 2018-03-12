@@ -17,7 +17,8 @@ public interface UserDao {
      * @param user
      */
     void saveUser(User user);
-	
+
+    
 	/**
 	 * 获取所有用户列表
 	 * @return
@@ -25,11 +26,11 @@ public interface UserDao {
 	List<User> getAllUser();
 	
 	/**
-	 * 根据id查询用户信息
-	 * @param id
+	 * 根据username查询用户信息
+	 * @param username
 	 * @return
 	 */
-	User getById(Integer id);
+	User getByName(String username);
 	
 	/**
 	 * 更新用户的名称
@@ -38,8 +39,8 @@ public interface UserDao {
 	void rename(User user);
 	
 	/**
-	 * 根据id删除指定的用户
-	 * @param id
+	 * 根据username删除指定的用户
+	 * @param username
 	 */
-	void deleteById(Integer id);
+	void deleteByName(String username);
 }

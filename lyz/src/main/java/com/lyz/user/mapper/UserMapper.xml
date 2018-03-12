@@ -5,29 +5,30 @@
     <select id="findUser" resultType="com.lyz.user.bean.User" >
         select * from user u where u.username=#{0} and u.password=#{1}
     </select>
-    <!-- 插入一条城市记录 -->
+    <!-- 插入一条用户记录 -->
     <insert id="saveUser" parameterType="com.lyz.user.bean.User">
-    	insert into user (username,password,name, email)
-        values (#{username},#{password}, #{name}, #{email} )
+    	insert into user (uid,username,password,name, email,telephone)
+        values (#{uid},#{username},#{password}, #{name}, #{email},#{telephone} )
     </insert>
+   
 
-    <!-- 根据省份名称返回该省份下的所有城市列表 -->
+    <!-- 查询所有用户数据 -->
     <select id="getAllUser" resultType="com.lyz.user.bean.User">
 		select * from user u	
     </select>
     
-    <!-- 根据 city_code 查找城市信息 -->
-    <select id="getById" resultType="com.lyz.user.bean.User" parameterType="java.lang.Integer">
-    	select * from user u where u.uid = #{uid}
+    <!-- 根据 username 查找用户信息 -->
+    <select id="getByName" resultType="com.lyz.user.bean.User" parameterType="java.lang.String">
+    	select * from user u where u.username = #{username}
     </select>
     
-    <!-- 重命名城市 -->  
+    <!-- 重命名用户 -->  
     <update id="rename" parameterType="com.lyz.user.bean.User">
-    	update user set username = #{username} where uid = #{uid}
+    	update user set name = #{name} where username = #{username}
     </update>  
     
     <!-- 删除一个城市记录 -->  
-    <delete id="deleteById" parameterType="java.lang.Integer">  
-        delete from user where uid = #{uid}  
+    <delete id="deleteByName" parameterType="java.lang.String">  
+        delete from user where username = #{username}
     </delete>  
 </mapper>

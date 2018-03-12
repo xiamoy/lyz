@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lyz.user.dao.ProductDao" >
+
+    <select id="findAllCategory" resultType="com.lyz.user.bean.Category" >
+        select * from  category
+    </select>
+    
+    <select id="findProductByCatg" resultType="com.lyz.user.bean.Product" parameterType="java.lang.String">
+        select * from product p where p.cid=#{cid}
+    </select>
+    
+</mapper>

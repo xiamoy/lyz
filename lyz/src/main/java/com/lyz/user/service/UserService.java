@@ -17,8 +17,8 @@ public interface UserService {
      * 保存用户
      * @param user
      */
-    void saveUser(String username, String password, String name,String email);
-	
+    void saveUser(User user);
+    
 	/**
 	 * 获取所有用户列表
 	 * @return
@@ -26,21 +26,21 @@ public interface UserService {
 	List<User> getAllUser();
 	
 	/**
-	 * 根据id查询用户信息
+	 * 根据用户名查询用户信息
 	 * @param id
 	 * @return
 	 */
-	User getUserById(Integer id);
+	User getUserByName(String username);
 	
 	/**
 	 * 更新用户的名称
 	 * @param user
 	 */
-	void renameUser(String name, String id);
+	void renameUser(String name, String username);
 	
 	/**
 	 * 根据id删除指定的用户
 	 * @param id
 	 */
-	void deleteUserById(Integer id);
+	void deleteUserByName(String username);
 }
