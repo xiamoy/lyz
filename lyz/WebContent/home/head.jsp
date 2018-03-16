@@ -1,26 +1,47 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
+<%
+	Object sessionUser = request.getSession().getAttribute("login_user");
+	if (sessionUser != null) {
+		String username = (String)sessionUser;
+%>
+<script>
+	var username= '<%=username%>';
+	window.onload = function() {
+		$("#loginTag").text("你好 " + username);
+		$("#loginTag").append("&nbsp;&nbsp;&nbsp;&nbsp;<a href='${pageContext.request.contextPath}/user/logout' target='_top' class='h'>退出</a> ");
+		$("#login-name").text(username);
+		$("#member-logout").hide();
+		$("#member-login").show();
+		
+	}
+</script>
+<%
+	}
+%>
+
 <div class="hmtop">
 	<!--顶部导航条 -->
 	<div class="am-container header">
 		<ul class="message-l">
 			<div class="topMessage">
 				<div id="loginTag" class="menu-hd">
-					<a href="login.jsp" target="_top" class="h">亲，请登录 </a> <a
-						href="register.jsp" target="_top">免费注册</a>
+					<a href="${pageContext.request.contextPath}/home/login.jsp" target="_top" class="h">亲，请登录 </a> 
+					<a href="${pageContext.request.contextPath}/home/register.jsp" target="_top">免费注册</a>
 				</div>
+				
 			</div>
 		</ul>
 		<ul class="message-r">
 			<div class="topMessage home">
 				<div class="menu-hd">
-					<a href="home.html" target="_top" class="h">商城首页</a>
+					<a href="${pageContext.request.contextPath}/home/home.jsp" target="_top" class="h">商城首页</a>
 				</div>
 			</div>
 			<div class="topMessage my-shangcheng">
 				<div class="menu-hd MyShangcheng">
-					<a href="../person/index.html" target="_top"><i
+					<a href="../person/information.html" target="_top"><i
 						class="am-icon-user am-icon-fw"></i>个人中心</a>
 				</div>
 			</div>
@@ -61,7 +82,3 @@
 
 	<div class="clear"></div>
 </div>
-
-
-
-</script>

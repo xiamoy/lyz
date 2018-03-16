@@ -7,7 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-hddub,${user }
-${user.name }
+	该商品不存在或已移动位置，404 Not Found
 </body>
 </html>

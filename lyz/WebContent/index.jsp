@@ -15,16 +15,10 @@
 
 </head>
 <body>
-<!-- <form method="post" action="user/login">
-	<input name="username" />
-	<br>
-	<input name="password" type="password"/>
-	<input type="submit" value="login in" />
-</form>
- -->
+
 
 <%
-	request.getRequestDispatcher("/product/category").forward(request, response);
+	request.getRequestDispatcher("/product/initProduct").forward(request, response);
 %>
 
 </body>

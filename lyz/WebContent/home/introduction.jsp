@@ -1,3 +1,9 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 
@@ -22,54 +28,15 @@
 		<script type="text/javascript" src="../js/jquery.imagezoom.min.js"></script>
 		<script type="text/javascript" src="../js/jquery.flexslider.js"></script>
 		<script type="text/javascript" src="../js/list.js"></script>
-
+		
 	</head>
 
 	<body>
 
 
 		<!--顶部导航条 -->
-		<div class="am-container header">
-			<ul class="message-l">
-				<div class="topMessage">
-					<div class="menu-hd">
-						<a href="#" target="_top" class="h">亲，请登录</a>
-						<a href="#" target="_top">免费注册</a>
-					</div>
-				</div>
-			</ul>
-			<ul class="message-r">
-				<div class="topMessage home">
-					<div class="menu-hd"><a href="#" target="_top" class="h">商城首页</a></div>
-				</div>
-				<div class="topMessage my-shangcheng">
-					<div class="menu-hd MyShangcheng"><a href="#" target="_top"><i class="am-icon-user am-icon-fw"></i>个人中心</a></div>
-				</div>
-				<div class="topMessage mini-cart">
-					<div class="menu-hd"><a id="mc-menu-hd" href="#" target="_top"><i class="am-icon-shopping-cart  am-icon-fw"></i><span>购物车</span><strong id="J_MiniCartNum" class="h">0</strong></a></div>
-				</div>
-				<div class="topMessage favorite">
-					<div class="menu-hd"><a href="#" target="_top"><i class="am-icon-heart am-icon-fw"></i><span>收藏夹</span></a></div>
-			</ul>
-			</div>
-
-			<!--悬浮搜索框-->
-
-			<div class="nav white">
-				<div class="logo"><img src="../images/logo.png" /></div>
-				<div class="logoBig">
-					<li><img src="../images/logobig.png" /></li>
-				</div>
-				<div class="search-bar pr">
-					<a name="index_none_header_sysc" href="#"></a>
-					<form>
-						<input id="searchInput" name="index_none_header_sysc" type="text" placeholder="搜索" autocomplete="off">
-						<input id="ai-topsearch" class="submit am-btn" value="搜索" index="1" type="submit">
-					</form>
-				</div>
-			</div>
-
-			<div class="clear"></div>
+		<%@include file="/home/head.jsp" %>
+		
             <b class="line"></b>
 			<div class="listMain">
 
@@ -90,7 +57,7 @@
 						</div>
 			</div>
 				<ol class="am-breadcrumb am-breadcrumb-slash">
-					<li><a href="#">首页</a></li>
+					<li><a href="${pageContext.request.contextPath }">首页</a></li>
 					<li><a href="#">分类</a></li>
 					<li class="am-active">内容</li>
 				</ol>
@@ -141,7 +108,7 @@
 							</script>
 
 							<div class="tb-booth tb-pic tb-s310">
-								<a href="../images/01.jpg"><img src="../images/01_mid.jpg" alt="细节展示放大镜特效" rel="../images/01.jpg" class="jqzoom" /></a>
+								<a href="../images/01.jpg"><img  src="../images/01_mid.jpg" alt="细节展示放大镜特效" rel="../images/01.jpg" class="jqzoom" /></a>
 							</div>
 							<ul class="tb-thumb" id="thumblist">
 								<li class="tb-selected">
@@ -170,80 +137,77 @@
 						<!--规格属性-->
 						<!--名称-->
 						<div class="tb-detail-hd">
-							<h1>	
-				 良品铺子 手剥松子218g 坚果炒货 巴西松子
-	          </h1>
+							<h1>${prod_item.pname } </h1>
+							
 						</div>
 						<div class="tb-detail-list">
 							<!--价格-->
 							<div class="tb-detail-price">
 								<li class="price iteminfo_price">
 									<dt>促销价</dt>
-									<dd><em>¥</em><b class="sys_item_price">56.90</b>  </dd>                                 
+									<dd><em>¥</em><b class="sys_item_price">${prod_item.shopPrice}</b>  </dd>                                 
 								</li>
 								<li class="price iteminfo_mktprice">
-									<dt>原价</dt>
-									<dd><em>¥</em><b class="sys_item_mktprice">98.00</b></dd>									
+									<dt>市场价</dt>
+									<dd><em>¥</em><b class="sys_item_mktprice">${prod_item.marketPrice}</b></dd>									
 								</li>
 								<div class="clear"></div>
 							</div>
 
 							<!--地址-->
 							<dl class="iteminfo_parameter freight">
-	<dt>配送至</dt>
-	<div class="iteminfo_freprice">
-		<div class="am-form-content address">
-
-			<div class="city-picker-selector" id="city-picker-search">
-				<div class="selector-item storey province">
-					<a href="javascript:;" class="selector-name reveal df-color ">请选择省份</a>
-					<input type="hidden" name="userProvinceId" class="input-price val-error" value="" data-required="userProvinceId">
-					<div class="selector-list listing hide">
-						<div class="selector-search">
-							<input type="text" class="input-search" value="" placeholder="拼音、中文搜索">
-						</div>
-						<ul>
-							<li>北京市</li>
-							<li>天津市</li>
-						</ul>
-					</div>
-				</div>
-				<div class="selector-item storey city">
-					<a href="javascript:;" class="selector-name reveal df-color forbid">请选择城市</a>
-					<input type="hidden" name="userCityId" class="input-price val-error" value="" data-required="userCityId">
-					<div class="selector-list listing hide">
-						<div class="selector-search">
-							<input type="text" class="input-search" value="" placeholder="拼音、中文搜索">
-						</div>
-						<ul></ul>
-					</div>
-				</div>
-				<div class="selector-item storey district">
-					<a href="javascript:;" class="selector-name reveal df-color forbid">请选择区县</a>
-					<input type="hidden" name="userDistrictId" class="input-price val-error" value="" data-required="userDistrictId">
-					<div class="selector-list listing hide">
-						<div class="selector-search">
-							<input type="text" class="input-search" value="" placeholder="拼音、中文搜索">
-						</div>
-						<ul></ul>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!--<div class="pay-logis">
-										快递<b class="sys_item_freprice">10</b>元
-									</div>-->
-	</div>
-</dl>
+								<dt>配送至</dt>
+								<div class="iteminfo_freprice">
+									<div class="am-form-content address">
+							
+										<div class="city-picker-selector" id="city-picker-search">
+											<div class="selector-item storey province">
+												<a href="javascript:;" class="selector-name reveal df-color ">请选择省份</a>
+												<input type="hidden" name="userProvinceId" class="input-price val-error" value="" data-required="userProvinceId">
+												<div class="selector-list listing hide">
+													<div class="selector-search">
+														<input type="text" class="input-search" value="" placeholder="拼音、中文搜索">
+													</div>
+													<ul>
+														<li>北京市</li>
+														<li>天津市</li>
+													</ul>
+												</div>
+											</div>
+											<div class="selector-item storey city">
+												<a href="javascript:;" class="selector-name reveal df-color forbid">请选择城市</a>
+												<input type="hidden" name="userCityId" class="input-price val-error" value="" data-required="userCityId">
+												<div class="selector-list listing hide">
+													<div class="selector-search">
+														<input type="text" class="input-search" value="" placeholder="拼音、中文搜索">
+													</div>
+													<ul></ul>
+												</div>
+											</div>
+											<div class="selector-item storey district">
+												<a href="javascript:;" class="selector-name reveal df-color forbid">请选择区县</a>
+												<input type="hidden" name="userDistrictId" class="input-price val-error" value="" data-required="userDistrictId">
+												<div class="selector-list listing hide">
+													<div class="selector-search">
+														<input type="text" class="input-search" value="" placeholder="拼音、中文搜索">
+													</div>
+													<ul></ul>
+												</div>
+											</div>
+										</div>
+									</div>
+									
+								</div>
+							</dl>
 							<div class="clear"></div>
 
 							<!--销量-->
 							<ul class="tm-ind-panel">
-								<li class="tm-ind-item tm-ind-sellCount canClick">
+								<!-- <li class="tm-ind-item tm-ind-sellCount canClick">
 									<div class="tm-indcon"><span class="tm-label">月销量</span><span class="tm-count">1015</span></div>
-								</li>
+								</li> -->
 								<li class="tm-ind-item tm-ind-sumCount canClick">
-									<div class="tm-indcon"><span class="tm-label">累计销量</span><span class="tm-count">6015</span></div>
+									<div class="tm-indcon"><span class="tm-label">累计销量</span><span class="tm-count">${prod_item.sales}</span></div>
 								</li>
 								<li class="tm-ind-item tm-ind-reviewCount canClick tm-line3">
 									<div class="tm-indcon"><span class="tm-label">累计评价</span><span class="tm-count">640</span></div>
@@ -265,9 +229,9 @@
 											<a href="javascript:;" title="关闭" class="close">×</a>
 										</div>
 										<div class="theme-popbod dform">
-											<form class="theme-signin" name="loginform" action="" method="post">
-
-												<div class="theme-signin-left">
+											<form id="loginform" class="theme-signin" name="loginform" action="${pageContext.request.contextPath}/cart/addCart?pid=${prod_item.pid}" method="get">
+												 <input type="hidden" name="pid" value="${prod_item.pid }"> 
+													<div class="theme-signin-left">
 
 													<div class="theme-options">
 														<div class="cart-title">口味</div>
@@ -290,9 +254,10 @@
 														<div class="cart-title number">数量</div>
 														<dd>
 															<input id="min" class="am-btn am-btn-default" name="" type="button" value="-" />
-															<input id="text_box" name="" type="text" value="1" style="width:30px;" />
+															<input id="text_box" name="item_count" type="text" value="1" style="width:30px;" />
 															<input id="add" class="am-btn am-btn-default" name="" type="button" value="+" />
-															<span id="Stock" class="tb-hidden">库存<span class="stock">1000</span>件</span>
+															<span id="Stock" class="tb-hidden">库存<span class="stock">
+																<input id="item_stock" name="item_stock" type="button" value="${prod_item.stock }"/></span>件</span>
 														</dd>
 
 													</div>
@@ -320,8 +285,9 @@
 								</dd>
 							</dl>
 							<div class="clear"></div>
+							
 							<!--活动	-->
-							<div class="shopPromotion gold">
+							<!-- <div class="shopPromotion gold">
 								<div class="hot">
 									<dt class="tb-metatit">店铺优惠</dt>
 									<div class="gold-list">
@@ -339,23 +305,23 @@
 										</ul>
 									</div>
 								</div>
-							</div>
+							</div> -->
 						</div>
 
 						<div class="pay">
 							<div class="pay-opt">
-							<a href="home.html"><span class="am-icon-home am-icon-fw">首页</span></a>
+							<a href="${pageContext.request.contextPath }/home/home.jsp"><span class="am-icon-home am-icon-fw">首页</span></a>
 							<a><span class="am-icon-heart am-icon-fw">收藏</span></a>
 							
 							</div>
 							<li>
 								<div class="clearfix tb-btn tb-btn-buy theme-login">
-									<a id="LikBuy" title="点此按钮到下一步确认购买信息" href="#">立即购买</a>
+									<a id="LikBuy"  title="点此按钮到下一步确认购买信息" href="${pageContext.request.contextPath }/cart/directBuy.action?pid=${prod_item.pid}" >立即购买</a>
 								</div>
 							</li>
 							<li>
 								<div class="clearfix tb-btn tb-btn-basket theme-login">
-									<a id="LikBasket" title="加入购物车" href="#"><i></i>加入购物车</a>
+									<a id="LikBasket" onclick="submitForm()" title="加入购物车" href="javascript:void(0)"><i></i>加入购物车</a>
 								</div>
 							</li>
 						</div>
@@ -369,7 +335,6 @@
 				<!--优惠套装-->
 				<div class="match">
 					<div class="match-title"></div>
-					
 				</div>
 				<div class="clear"></div>
 				
@@ -442,23 +407,15 @@
 						<div class="am-tabs" data-am-tabs>
 							<ul class="am-avg-sm-3 am-tabs-nav am-nav am-nav-tabs">
 								<li class="am-active">
-									<a href="#">
-
-										<span class="index-needs-dt-txt">宝贝详情</span></a>
-
+									<a href="javascript:void(0)"><span class="index-needs-dt-txt">宝贝详情</span></a>
 								</li>
 
 								<li>
-									<a href="#">
-
-										<span class="index-needs-dt-txt">全部评价</span></a>
-
+									<a href="javascript:void(0)"><span class="index-needs-dt-txt">全部评价</span></a>
 								</li>
 
 								<li>
-									<a href="#">
-
-										<span class="index-needs-dt-txt">猜你喜欢</span></a>
+									<a href="javascript:void(0)"><span class="index-needs-dt-txt">猜你喜欢</span></a>
 								</li>
 							</ul>
 
@@ -466,22 +423,22 @@
 
 								<div class="am-tab-panel am-fade am-in am-active">
 									<div class="J_Brand">
-
-										<div class="attr-list-hd tm-clear">
-											<h4>产品参数：</h4></div>
+										 <div class="attr-list-hd tm-clear">
+											<h4>产品描述：</h4></div>
 										<div class="clear"></div>
-										<ul id="J_AttrUL">
-											<li title="">产品类型:&nbsp;烘炒类</li>
-											<li title="">原料产地:&nbsp;巴基斯坦</li>
-											<li title="">产地:&nbsp;湖北省武汉市</li>
-											<li title="">配料表:&nbsp;进口松子、食用盐</li>
-											<li title="">产品规格:&nbsp;210g</li>
-											<li title="">保质期:&nbsp;180天</li>
-											<li title="">产品标准号:&nbsp;GB/T 22165</li>
-											<li title="">生产许可证编号：&nbsp;QS4201 1801 0226</li>
-											<li title="">储存方法：&nbsp;请放置于常温、阴凉、通风、干燥处保存 </li>
-											<li title="">食用方法：&nbsp;开袋去壳即食</li>
-										</ul>
+										
+										<c:choose>
+											<c:when  test="${fn:contains(prod_item.pdesc,';' )}">
+												<ul id="J_AttrUL">
+													<c:forEach items="${fn:split(prod_item.pdesc,';')}" var="des_param">
+														<li title="">${des_param }</li>
+													</c:forEach>
+												</ul>
+											</c:when>
+											<c:otherwise>
+												${prod_item.pdesc }	
+											</c:otherwise>
+										</c:choose>
 										<div class="clear"></div>
 									</div>
 
@@ -490,13 +447,14 @@
 											<h4>商品细节</h4>
 										</div>
 										<div class="twlistNews">
-											<img src="../images/tw1.jpg" />
+											<img alt="" src="${pageContext.request.contextPath }/${prod_item.pimage }">
+											<!-- <img src="../images/tw1.jpg" />
 											<img src="../images/tw2.jpg" />
 											<img src="../images/tw3.jpg" />
 											<img src="../images/tw4.jpg" />
 											<img src="../images/tw5.jpg" />
 											<img src="../images/tw6.jpg" />
-											<img src="../images/tw7.jpg" />
+											<img src="../images/tw7.jpg" /> -->
 										</div>
 									</div>
 									<div class="clear"></div>
@@ -507,21 +465,16 @@
 									
                                     <div class="actor-new">
                                     	<div class="rate">                
-                                    		<strong>100<span>%</span></strong><br> <span>好评度</span>            
+                                    		
+                                    		<strong><fmt:formatNumber type="percent"  value="${good_count/commt_counts }" /></strong><br> <span>好评度</span>            
                                     	</div>
                                         <dl>                    
                                             <dt>买家印象</dt>                    
-                                            <dd class="p-bfc">
-                                            			<q class="comm-tags"><span>味道不错</span><em>(2177)</em></q>
-                                            			<q class="comm-tags"><span>颗粒饱满</span><em>(1860)</em></q>
-                                            			<q class="comm-tags"><span>口感好</span><em>(1823)</em></q>
-                                            			<q class="comm-tags"><span>商品不错</span><em>(1689)</em></q>
-                                            			<q class="comm-tags"><span>香脆可口</span><em>(1488)</em></q>
-                                            			<q class="comm-tags"><span>个个开口</span><em>(1392)</em></q>
-                                            			<q class="comm-tags"><span>价格便宜</span><em>(1119)</em></q>
-                                            			<q class="comm-tags"><span>特价买的</span><em>(865)</em></q>
-                                            			<q class="comm-tags"><span>皮很薄</span><em>(831)</em></q> 
-                                            </dd>                                           
+                                             <dd class="p-bfc">
+                                       			<q class="comm-tags"><span>Level 1</span><em>好评</em></q>
+                                       			<q class="comm-tags"><span>Level 2</span><em>中评</em></q>
+                                       			<q class="comm-tags"><span>Level 3</span><em>差评</em></q>
+                                            </dd>                                       
                                          </dl> 
                                     </div>	
                                     <div class="clear"></div>
@@ -530,28 +483,28 @@
 											<li class="tb-taglist-li tb-taglist-li-current">
 												<div class="comment-info">
 													<span>全部评价</span>
-													<span class="tb-tbcr-num">(32)</span>
+													<span class="tb-tbcr-num">(${commt_counts })</span>
 												</div>
 											</li>
 
 											<li class="tb-taglist-li tb-taglist-li-1">
 												<div class="comment-info">
 													<span>好评</span>
-													<span class="tb-tbcr-num">(32)</span>
+													<span class="tb-tbcr-num">(${good_count })</span>
 												</div>
 											</li>
 
 											<li class="tb-taglist-li tb-taglist-li-0">
 												<div class="comment-info">
 													<span>中评</span>
-													<span class="tb-tbcr-num">(32)</span>
+													<span class="tb-tbcr-num">(${mid_count })</span>
 												</div>
 											</li>
 
 											<li class="tb-taglist-li tb-taglist-li--1">
 												<div class="comment-info">
 													<span>差评</span>
-													<span class="tb-tbcr-num">(32)</span>
+													<span class="tb-tbcr-num">(${bad_count })</span>
 												</div>
 											</li>
 										</ul>
@@ -559,6 +512,7 @@
 									<div class="clear"></div>
 
 									<ul class="am-comments-list am-comments-list-flip">
+									<c:forEach var="comment_item" items="${prod_comment }">
 										<li class="am-comment">
 											<!-- 评论容器 -->
 											<a href="">
@@ -572,20 +526,20 @@
 													<!--<h3 class="am-comment-title">评论标题</h3>-->
 													<div class="am-comment-meta">
 														<!-- 评论元数据 -->
-														<a href="#link-to-user" class="am-comment-author">b***1 (匿名)</a>
+														<a href="#link-to-user" class="am-comment-author">${comment_item.poster }</a>
 														<!-- 评论者 -->
 														评论于
-														<time datetime="">2015年11月02日 17:46</time>
+														<time datetime="">${comment_item.postdate }</time>
 													</div>
 												</header>
 
 												<div class="am-comment-bd">
 													<div class="tb-rev-item " data-id="255776406962">
 														<div class="J_TbcRate_ReviewContent tb-tbcr-content ">
-															摸起来丝滑柔软，不厚，没色差，颜色好看！买这个衣服还接到诈骗电话，我很好奇他们是怎么知道我买了这件衣服，并且还知道我的电话的！
+															${comment_item.description }
 														</div>
 														<div class="tb-r-act-bar">
-															颜色分类：柠檬黄&nbsp;&nbsp;尺码：S
+															评价等级：&nbsp;&nbsp;${comment_item.level }
 														</div>
 													</div>
 
@@ -593,211 +547,8 @@
 												<!-- 评论内容 -->
 											</div>
 										</li>
+										</c:forEach>
 										
-										
-										<li class="am-comment">
-											<!-- 评论容器 -->
-											<a href="">
-												<img class="am-comment-avatar" src="../images/hwbn40x40.jpg" />
-												<!-- 评论者头像 -->
-											</a>
-
-											<div class="am-comment-main">
-												<!-- 评论内容容器 -->
-												<header class="am-comment-hd">
-													<!--<h3 class="am-comment-title">评论标题</h3>-->
-													<div class="am-comment-meta">
-														<!-- 评论元数据 -->
-														<a href="#link-to-user" class="am-comment-author">b***1 (匿名)</a>
-														<!-- 评论者 -->
-														评论于
-														<time datetime="">2015年11月02日 17:46</time>
-													</div>
-												</header>
-
-												<div class="am-comment-bd">
-													<div class="tb-rev-item " data-id="255776406962">
-														<div class="J_TbcRate_ReviewContent tb-tbcr-content ">
-															摸起来丝滑柔软，不厚，没色差，颜色好看！买这个衣服还接到诈骗电话，我很好奇他们是怎么知道我买了这件衣服，并且还知道我的电话的！
-														</div>
-														<div class="tb-r-act-bar">
-															颜色分类：柠檬黄&nbsp;&nbsp;尺码：S
-														</div>
-													</div>
-
-												</div>
-												<!-- 评论内容 -->
-											</div>
-										</li>
-										<li class="am-comment">
-											<!-- 评论容器 -->
-											<a href="">
-												<img class="am-comment-avatar" src="../images/hwbn40x40.jpg" />
-												<!-- 评论者头像 -->
-											</a>
-
-											<div class="am-comment-main">
-												<!-- 评论内容容器 -->
-												<header class="am-comment-hd">
-													<!--<h3 class="am-comment-title">评论标题</h3>-->
-													<div class="am-comment-meta">
-														<!-- 评论元数据 -->
-														<a href="#link-to-user" class="am-comment-author">h***n (匿名)</a>
-														<!-- 评论者 -->
-														评论于
-														<time datetime="">2015年11月25日 12:48</time>
-													</div>
-												</header>
-
-												<div class="am-comment-bd">
-													<div class="tb-rev-item " data-id="258040417670">
-														<div class="J_TbcRate_ReviewContent tb-tbcr-content ">
-															式样不错，初冬穿
-														</div>
-														<div class="tb-r-act-bar">
-															颜色分类：柠檬黄&nbsp;&nbsp;尺码：L
-														</div>
-													</div>
-												</div>
-												<!-- 评论内容 -->
-											</div>
-										</li>
-										<li class="am-comment">
-											<!-- 评论容器 -->
-											<a href="">
-												<img class="am-comment-avatar" src="../images/hwbn40x40.jpg" />
-												<!-- 评论者头像 -->
-											</a>
-
-											<div class="am-comment-main">
-												<!-- 评论内容容器 -->
-												<header class="am-comment-hd">
-													<!--<h3 class="am-comment-title">评论标题</h3>-->
-													<div class="am-comment-meta">
-														<!-- 评论元数据 -->
-														<a href="#link-to-user" class="am-comment-author">b***1 (匿名)</a>
-														<!-- 评论者 -->
-														评论于
-														<time datetime="">2015年11月02日 17:46</time>
-													</div>
-												</header>
-
-												<div class="am-comment-bd">
-													<div class="tb-rev-item " data-id="255776406962">
-														<div class="J_TbcRate_ReviewContent tb-tbcr-content ">
-															摸起来丝滑柔软，不厚，没色差，颜色好看！买这个衣服还接到诈骗电话，我很好奇他们是怎么知道我买了这件衣服，并且还知道我的电话的！
-														</div>
-														<div class="tb-r-act-bar">
-															颜色分类：柠檬黄&nbsp;&nbsp;尺码：S
-														</div>
-													</div>
-
-												</div>
-												<!-- 评论内容 -->
-											</div>
-										</li>
-										<li class="am-comment">
-											<!-- 评论容器 -->
-											<a href="">
-												<img class="am-comment-avatar" src="../images/hwbn40x40.jpg" />
-												<!-- 评论者头像 -->
-											</a>
-
-											<div class="am-comment-main">
-												<!-- 评论内容容器 -->
-												<header class="am-comment-hd">
-													<!--<h3 class="am-comment-title">评论标题</h3>-->
-													<div class="am-comment-meta">
-														<!-- 评论元数据 -->
-														<a href="#link-to-user" class="am-comment-author">l***4 (匿名)</a>
-														<!-- 评论者 -->
-														评论于
-														<time datetime="">2015年10月28日 11:33</time>
-													</div>
-												</header>
-
-												<div class="am-comment-bd">
-													<div class="tb-rev-item " data-id="255095758792">
-														<div class="J_TbcRate_ReviewContent tb-tbcr-content ">
-															没有色差，很暖和……美美的
-														</div>
-														<div class="tb-r-act-bar">
-															颜色分类：蓝调灰&nbsp;&nbsp;尺码：2XL
-														</div>
-													</div>
-
-												</div>
-												<!-- 评论内容 -->
-											</div>
-										</li>
-										<li class="am-comment">
-											<!-- 评论容器 -->
-											<a href="">
-												<img class="am-comment-avatar" src="../images/hwbn40x40.jpg" />
-												<!-- 评论者头像 -->
-											</a>
-
-											<div class="am-comment-main">
-												<!-- 评论内容容器 -->
-												<header class="am-comment-hd">
-													<!--<h3 class="am-comment-title">评论标题</h3>-->
-													<div class="am-comment-meta">
-														<!-- 评论元数据 -->
-														<a href="#link-to-user" class="am-comment-author">b***1 (匿名)</a>
-														<!-- 评论者 -->
-														评论于
-														<time datetime="">2015年11月02日 17:46</time>
-													</div>
-												</header>
-
-												<div class="am-comment-bd">
-													<div class="tb-rev-item " data-id="255776406962">
-														<div class="J_TbcRate_ReviewContent tb-tbcr-content ">
-															摸起来丝滑柔软，不厚，没色差，颜色好看！买这个衣服还接到诈骗电话，我很好奇他们是怎么知道我买了这件衣服，并且还知道我的电话的！
-														</div>
-														<div class="tb-r-act-bar">
-															颜色分类：柠檬黄&nbsp;&nbsp;尺码：S
-														</div>
-													</div>
-
-												</div>
-												<!-- 评论内容 -->
-											</div>
-										</li>
-										<li class="am-comment">
-											<!-- 评论容器 -->
-											<a href="">
-												<img class="am-comment-avatar" src="../images/hwbn40x40.jpg" />
-												<!-- 评论者头像 -->
-											</a>
-
-											<div class="am-comment-main">
-												<!-- 评论内容容器 -->
-												<header class="am-comment-hd">
-													<!--<h3 class="am-comment-title">评论标题</h3>-->
-													<div class="am-comment-meta">
-														<!-- 评论元数据 -->
-														<a href="#link-to-user" class="am-comment-author">h***n (匿名)</a>
-														<!-- 评论者 -->
-														评论于
-														<time datetime="">2015年11月25日 12:48</time>
-													</div>
-												</header>
-
-												<div class="am-comment-bd">
-													<div class="tb-rev-item " data-id="258040417670">
-														<div class="J_TbcRate_ReviewContent tb-tbcr-content ">
-															式样不错，初冬穿
-														</div>
-														<div class="tb-r-act-bar">
-															颜色分类：柠檬黄&nbsp;&nbsp;尺码：L
-														</div>
-													</div>
-												</div>
-												<!-- 评论内容 -->
-											</div>
-										</li>
-
 									</ul>
 
 									<div class="clear"></div>
@@ -1170,6 +921,9 @@
 <script type="text/javascript" src="../js/citydata.js"></script>
 <script type="text/javascript" src="../js/cityPicker-1.0.0.js?v=1"></script>
 <script type="text/javascript">
+	function submitForm(){
+		document.getElementById("loginform").submit();
+	}
 	$(function () {
 
 		//模拟城市-无联动/无搜索
@@ -1222,6 +976,44 @@
 			'name': '小店区'
 		}]);
 	});
+	
+	$(document).ready(function(){
+		
+		$("#min").on('click',function(){
+			
+			var count = parseInt($("#text_box").val());
+			var stock = parseInt($("#item_stock").val());
+			if (count>1 && stock>0) {
+				count = count-1;
+				$(this).attr("disabled",false);
+			} else{
+				$("#min").attr("disabled",true);
+			}
+		});
+		
+		$("#add").on('click',function(){
+			
+			var count = parseInt($("#text_box").val());
+			var stock = parseInt($("#item_stock").val());
+			if (stock<=count) {
+				$(this).attr("disabled",true);
+			} else{
+				count = count+1;
+				$(this).attr("disabled",false);
+			}
+		});
+		
+		$("#text_box").on('change',function(e){
+			var input_count = parseInt(e.delegateTarget.value);
+			var stock = parseInt($("#item_stock").val());
+			if (input_count>stock) {
+				input_count = stock;
+			
+			} 
+			$("#text_box").val(input_count);
+			
+		});
+	})
 </script>
 
 </html>

@@ -1,4 +1,8 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!DOCTYPE html>
+
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 	<head>
@@ -21,48 +25,8 @@
 	<body>
 
 		<!--顶部导航条 -->
-		<div class="am-container header">
-			<ul class="message-l">
-				<div class="topMessage">
-					<div class="menu-hd">
-						<a href="#" target="_top" class="h">亲，请登录</a>
-						<a href="#" target="_top">免费注册</a>
-					</div>
-				</div>
-			</ul>
-			<ul class="message-r">
-				<div class="topMessage home">
-					<div class="menu-hd"><a href="#" target="_top" class="h">商城首页</a></div>
-				</div>
-				<div class="topMessage my-shangcheng">
-					<div class="menu-hd MyShangcheng"><a href="#" target="_top"><i class="am-icon-user am-icon-fw"></i>个人中心</a></div>
-				</div>
-				<div class="topMessage mini-cart">
-					<div class="menu-hd"><a id="mc-menu-hd" href="#" target="_top"><i class="am-icon-shopping-cart  am-icon-fw"></i><span>购物车</span><strong id="J_MiniCartNum" class="h">0</strong></a></div>
-				</div>
-				<div class="topMessage favorite">
-					<div class="menu-hd"><a href="#" target="_top"><i class="am-icon-heart am-icon-fw"></i><span>收藏夹</span></a></div>
-			</ul>
-			</div>
-
-			<!--悬浮搜索框-->
-
-			<div class="nav white">
-				<div class="logo"><img src="../images/logo.png" /></div>
-				<div class="logoBig">
-					<li><img src="../images/logobig.png" /></li>
-				</div>
-
-				<div class="search-bar pr">
-					<a name="index_none_header_sysc" href="#"></a>
-					<form>
-						<input id="searchInput" name="index_none_header_sysc" type="text" placeholder="搜索" autocomplete="off">
-						<input id="ai-topsearch" class="submit am-btn" value="搜索" index="1" type="submit">
-					</form>
-				</div>
-			</div>
-
-			<div class="clear"></div>
+		<%@include file="/home/head.jsp" %>
+		
 			<div class="concent">
 				<!--地址 -->
 				<div class="paycont">
@@ -154,8 +118,8 @@
 
 						<div class="clear"></div>
 					</div>
-					<!--物流 -->
-					<div class="logistics">
+					<!--物流  TODO-->
+					<!-- <div class="logistics">
 						<h3>选择物流方式</h3>
 						<ul class="op_express_delivery_hot">
 							<li data-value="yuantong" class="OP_LOG_BTN  "><i class="c-gap-right" style="background-position:0px -468px"></i>圆通<span></span></li>
@@ -165,10 +129,10 @@
 							<li data-value="shunfeng" class="OP_LOG_BTN  op_express_delivery_hot_bottom"><i class="c-gap-right" style="background-position:0px -180px"></i>顺丰<span></span></li>
 						</ul>
 					</div>
-					<div class="clear"></div>
+					<div class="clear"></div> -->
 
-					<!--支付方式-->
-					<div class="logistics">
+					<!--支付方式 TODO-->
+					<!-- <div class="logistics">
 						<h3>选择支付方式</h3>
 						<ul class="pay-list">
 							<li class="pay card"><img src="../images/wangyin.jpg" />银联<span></span></li>
@@ -176,7 +140,7 @@
 							<li class="pay taobao"><img src="../images/zhifubao.jpg" />支付宝<span></span></li>
 						</ul>
 					</div>
-					<div class="clear"></div>
+					<div class="clear"></div> -->
 
 					<!--订单 -->
 					<div class="concent">
@@ -197,9 +161,9 @@
 									<div class="th th-sum">
 										<div class="td-inner">金额</div>
 									</div>
-									<div class="th th-oplist">
+									<!-- <div class="th th-oplist">
 										<div class="td-inner">配送方式</div>
-									</div>
+									</div> -->
 
 								</div>
 							</div>
@@ -253,14 +217,14 @@
 													<em tabindex="0" class="J_ItemSum number">117.00</em>
 												</div>
 											</li>
-											<li class="td td-oplist">
+											<!-- <li class="td td-oplist">
 												<div class="td-inner">
 													<span class="phone-title">配送方式</span>
 													<div class="pay-logis">
 														快递<b class="sys_item_freprice">10</b>元
 													</div>
 												</div>
-											</li>
+											</li> -->
 
 										</ul>
 										<div class="clear"></div>
@@ -318,14 +282,14 @@
 													<em tabindex="0" class="J_ItemSum number">117.00</em>
 												</div>
 											</li>
-											<li class="td td-oplist">
+											<!-- <li class="td td-oplist">
 												<div class="td-inner">
 													<span class="phone-title">配送方式</span>
 													<div class="pay-logis">
 														包邮
 													</div>
 												</div>
-											</li>
+											</li> -->
 
 										</ul>
 										<div class="clear"></div>
@@ -348,8 +312,8 @@
 								</div>
 
 							</div>
-							<!--优惠券 -->
-							<div class="buy-agio">
+							<!--优惠券  TODO-->
+							<!-- <div class="buy-agio">
 								<li class="td td-coupon">
 
 									<span class="coupon-title">优惠券</span>
@@ -398,12 +362,13 @@
 								</li>
 
 							</div>
-							<div class="clear"></div>
+							<div class="clear"></div> -->
+							
 							</div>
 							<!--含运费小计 -->
 							<div class="buy-point-discharge ">
 								<p class="price g_price ">
-									合计（含运费） <span>¥</span><em class="pay-sum">244.00</em>
+									合计 <span>¥</span><em class="pay-sum">244.00</em>
 								</p>
 							</div>
 
@@ -441,7 +406,7 @@
 
 									<div id="holyshit269" class="submitOrder">
 										<div class="go-btn-wrap">
-											<a id="J_Go" href="success.html" class="btn-go" tabindex="0" title="点击此按钮，提交订单">提交订单</a>
+											<a id="J_Go" href="${pageContext.request.contextPath }/order/subOrder" class="btn-go" tabindex="0" title="点击此按钮，提交订单">提交订单</a>
 										</div>
 									</div>
 									<div class="clear"></div>
@@ -452,28 +417,10 @@
 						<div class="clear"></div>
 					</div>
 				</div>
-				<div class="footer">
-					<div class="footer-hd">
-						<p>
-							<a href="#">恒望科技</a>
-							<b>|</b>
-							<a href="#">商城首页</a>
-							<b>|</b>
-							<a href="#">支付宝</a>
-							<b>|</b>
-							<a href="#">物流</a>
-						</p>
-					</div>
-					<div class="footer-bd">
-						<p>
-							<a href="#">关于恒望</a>
-							<a href="#">合作伙伴</a>
-							<a href="#">联系我们</a>
-							<a href="#">网站地图</a>
-							<em>© 2015-2025 Hengwang.com 版权所有. 更多模板 <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></em>
-						</p>
-					</div>
-				</div>
+				
+				<!-- include footer jsp file -->
+				<%@include file="/home/foot.jsp" %>
+				
 			</div>
 			<div class="theme-popover-mask"></div>
 			<div class="theme-popover">

@@ -10,4 +10,11 @@
         select * from product p where p.cid=#{cid}
     </select>
     
+    <select id="findProductById" resultType="com.lyz.user.bean.Product" parameterType="java.lang.Integer">
+        select * from product p where p.pid=#{pid}
+    </select>
+    
+    <select id="getTopSaleProduct" resultType="com.lyz.user.bean.Product">
+        select * from product order by sales DESC limit #{limit};
+    </select>
 </mapper>

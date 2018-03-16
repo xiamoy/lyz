@@ -1,5 +1,7 @@
 package com.lyz.util;
 
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -29,5 +31,14 @@ public class FormatUtil {
             return true;
         }
         return false;
+    }
+    
+    //可以往数据库插入”yyyy-MM-dd HH:mm:ss“类型
+    public static Timestamp formatDateToTimeStamp(Date date){
+    	if (date == null) {
+    		date = new Date();
+		}
+    	Timestamp tmp = new Timestamp(date.getTime());
+    	return tmp;
     }
 }

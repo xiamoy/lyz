@@ -70,6 +70,8 @@ ul.am-tabs-nav.am-nav.am-nav-tabs {width:100%;background:#fff;}
 .tm-ind-item {float: left;width: 33%;text-align: center;position: relative;left: -1px;border-left: 1px solid #E5DFDA;
 flex: 1 1 0%;line-height: 16px;cursor: pointer;}   
 .tm-ind-panel .tm-count {display: inline-block;line-height: 16px;height: 16px;color: #C40000;font-weight: 700;margin-left: 3px;}    
+#item_stock{background: none;border: none;padding :0 5px;cursor: default;}
+
 
 /*地址*/
 .address{margin-right:80px ;}

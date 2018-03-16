@@ -11,7 +11,7 @@
 	</context-param>
 	  
 	<!-- login filter -->
-	<!-- <filter>
+<!-- 	<filter>
 	    <filter-name>LoginFilter</filter-name>
 	    <filter-class>com.lyz.user.LoginFilter</filter-class>
 	    <init-param>
@@ -23,7 +23,7 @@
 	    <init-param>
 	        <description>不用检查用户的页面列表，用","分隔</description>
 	        <param-name>notCheckURLList</param-name>
-	        <param-value>index.jsp,login.jsp,jsp/success.jsp</param-value>
+	        <param-value>index.jsp,login.jsp,register.jsp,jsp/success.jsp</param-value>
 	     </init-param>
 	    
 	 </filter>

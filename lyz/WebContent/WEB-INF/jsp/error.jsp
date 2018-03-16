@@ -7,6 +7,8 @@
 <title>Invalid User</title>
 </head>
 <body>
+${msg }
+
 ERROR: No User find!
 ${login_user }
 </body>

@@ -9,14 +9,17 @@ public class Product implements Serializable {
 	
 	private int pid;
 	private String pname;
-	private double market_price;
-	private double shop_price;
+	private double marketPrice;
+	private double shopPrice;
 	private String pimage;
 	private String pdate;
 	private int is_hot;
 	private String pdesc;
 	private int pflag;
+	private int sales;
+	private int stock;
 	private String cid;
+	
 	
 	public int getPid() {
 		return pid;
@@ -30,17 +33,17 @@ public class Product implements Serializable {
 	public void setPname(String pname) {
 		this.pname = pname;
 	}
-	public double getMarket_price() {
-		return market_price;
+	public double getMarketPrice() {
+		return marketPrice;
 	}
-	public void setMarket_price(double market_price) {
-		this.market_price = market_price;
+	public void setMarketPrice(double marketPrice) {
+		this.marketPrice = marketPrice;
 	}
-	public double getShop_price() {
-		return shop_price;
+	public double getShopPrice() {
+		return shopPrice;
 	}
-	public void setShop_price(double shop_price) {
-		this.shop_price = shop_price;
+	public void setShopPrice(double shopPrice) {
+		this.shopPrice = shopPrice;
 	}
 	public String getPimage() {
 		return pimage;
@@ -72,14 +75,28 @@ public class Product implements Serializable {
 	public void setPflag(int pflag) {
 		this.pflag = pflag;
 	}
+	public int getSales() {
+		return sales;
+	}
+	public void setSales(int sales) {
+		this.sales = sales;
+	}
+	
+	public int getStock(){
+		return stock;
+	}
+	
+	public void setStock(int stock) {
+		this.stock = stock;
+	}
+	
+	
 	public String getCid() {
 		return cid;
 	}
 	public void setCid(String cid) {
 		this.cid = cid;
 	}
-	
-	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -100,4 +117,13 @@ public class Product implements Serializable {
 			return false;
 		return true;
 	}
+	@Override
+	public String toString() {
+		return "Product [pid=" + pid + ", pname=" + pname + ", marketPrice="
+				+ marketPrice + ", shopPrice=" + shopPrice + ", pimage="
+				+ pimage + ", pdate=" + pdate + ", is_hot=" + is_hot
+				+ ", pdesc=" + pdesc + ", pflag=" + pflag + ", sales=" + sales
+				+ ", stock="+stock+", cid=" + cid + "]";
+	}
+	
 }

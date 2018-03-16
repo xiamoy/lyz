@@ -30,4 +30,14 @@ public class ProductServiceImpl implements ProductService {
 		return mProductDao.findProductByCatg(cid);
 	}
 
+	@Override
+	public Product findProductById(int pid) {
+		return mProductDao.findProductById(pid);
+	}
+
+	@Override
+	public List<Product> getTopSaleProduct(int limit) {
+		return mProductDao.getTopSaleProduct(limit);
+	}
+
 }

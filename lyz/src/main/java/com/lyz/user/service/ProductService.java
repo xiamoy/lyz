@@ -9,4 +9,6 @@ public interface ProductService {
 
 	List<Category> findAllCategory();
 	List<Product> findProductByCatg(String cid);
+	Product findProductById(int pid);
+	List<Product> getTopSaleProduct(int limit);
 }

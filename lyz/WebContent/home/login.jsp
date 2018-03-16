@@ -17,7 +17,26 @@
 
 <link rel="stylesheet" href="../AmazeUI-2.4.2/assets/css/amazeui.css" />
 <link href="../css/dlstyle.css" rel="stylesheet" type="text/css">
+
+<script src="../AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
 </head>
+
+<%
+	
+	 Object defaultUser =  request.getSession().getAttribute("register_user");
+	if(defaultUser!=null){ 
+		String regist_user = (String)defaultUser;
+%>
+<script type="text/javascript">
+$(document).ready(function(){
+	 var user = '<%=regist_user %>'; 
+	$("#user").val(user);
+});
+
+</script>
+<%
+	 } 
+%>
 
 <body>
 
@@ -37,7 +56,7 @@
 				<div class="clear"></div>
 				
 				<div class="login-form">
-					<form method="post" action="../user/login">
+					<form method="post" action="${pageContext.request.contextPath }/user/login">
 						<div class="user-name">
 							<label for="user"><i class="am-icon-user"></i></label> <input
 								type="text" name="username" id="user" placeholder="邮箱/手机/用户名">
