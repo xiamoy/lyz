@@ -8,7 +8,7 @@ public class Cart {
 	private Map<Integer, CartItem> itemMap=new HashMap<Integer, CartItem>();
 	private Double total=0.0;
 	
-	public Collection<CartItem> getCarItems(){
+	public Collection<CartItem> getCartItems(){
 		return itemMap.values();
 	}
 	
@@ -43,9 +43,28 @@ public class Cart {
 	}
 	
 	
-	public void removeCarItem(Integer pid){
-		CartItem removeItem = itemMap.remove(pid);
-		total -= removeItem.getSubtotal();
+	public void removeCarItem(Integer... pids){
+		if (pids==null || pids.length==0) {
+			return;
+		}
+		for(Integer pid:pids){
+			CartItem removeItem = itemMap.remove(pid);
+			total -= removeItem.getSubtotal();
+		}
+	}
+	
+	public void removeCarItem(String...pidStrs){
+		if (pidStrs==null || pidStrs.length==0) {
+			return;
+		}
+		for(String pid:pidStrs){
+			CartItem item = itemMap.remove(Integer.parseInt(pid));
+			
+			if (item!=null) {
+				total -= item.getSubtotal();
+			}
+			
+		}
 	}
 	
 	public void clearCart(){

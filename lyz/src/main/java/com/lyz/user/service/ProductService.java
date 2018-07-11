@@ -11,4 +11,6 @@ public interface ProductService {
 	List<Product> findProductByCatg(String cid);
 	Product findProductById(int pid);
 	List<Product> getTopSaleProduct(int limit);
+	List<Product> searchKeyProduct(String keyword);
+	void updateProduct(Product product);
 }

@@ -1,6 +1,18 @@
 package com.lyz.user.bean;
 
-public class Category {
+import java.io.Serializable;
+
+import org.codehaus.jackson.map.annotate.JsonSerialize;
+
+import com.fasterxml.jackson.databind.PropertyNamingStrategy;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
+
+@JsonSerialize
+@JsonNaming(PropertyNamingStrategy.LowerCaseWithUnderscoresStrategy.class) 
+public class Category implements Serializable{
+	
+	
+	private static final long serialVersionUID = -6167451771924008279L;
 	
 	private String cid;
 	private String cname;

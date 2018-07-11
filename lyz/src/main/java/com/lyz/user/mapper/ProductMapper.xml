@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.lyz.user.dao.ProductDao" >
+    
+    <resultMap type="com.lyz.user.bean.Product" id="ProductResult">
+        <id column="pid" property="pid" jdbcType="INTEGER"/>
+        <result column="pname" property="pname" jdbcType="VARCHAR"/>
+        <result column="marketPrice" property="marketPrice" jdbcType="DOUBLE"/>
+        <result column="shopPrice" property="shopPrice" jdbcType="DOUBLE"/>
+        <result column="pimage" property="pimage" jdbcType="VARCHAR"/>
+        <result column="pdate" property="pdate" jdbcType="DATE" javaType="string"/>
+        <result column="isHot" property="isHot" jdbcType="INTEGER"/>
+        <result column="pdesc" property="pdesc" jdbcType="VARCHAR"/>
+        <result column="pflag" property="pflag" jdbcType="INTEGER"/>
+        <result column="sales" property="sales" jdbcType="INTEGER"/>
+        <result column="stock" property="stock" jdbcType="INTEGER"/>
+        <result column="cid" property="cid" jdbcType="VARCHAR"/>
+        <collection property="prodComments" column="pid" javaType="ArrayList"
+             ofType="com.lyz.user.bean.Comment"  select="com.lyz.user.dao.CommentDao.findCommentsByPid" />
+    </resultMap>
 
     <select id="findAllCategory" resultType="com.lyz.user.bean.Category" >
         select * from  category
@@ -10,11 +27,30 @@
         select * from product p where p.cid=#{cid}
     </select>
     
-    <select id="findProductById" resultType="com.lyz.user.bean.Product" parameterType="java.lang.Integer">
+    <select id="findProductById" resultMap="ProductResult" parameterType="java.lang.Integer">
         select * from product p where p.pid=#{pid}
     </select>
     
     <select id="getTopSaleProduct" resultType="com.lyz.user.bean.Product">
-        select * from product order by sales DESC limit #{limit};
+        select * from product order by sales desc limit #{limit};
     </select>
+    
+    <!-- search product name and product's category name -->
+    <select id="searchKeyProduct" resultType="com.lyz.user.bean.Product" parameterType="java.lang.String">
+        select * from product p where p.pname like '%${keyword}%' or  p.cid in (select cid from category c where c.cname like '%${keyword}%')
+    </select>
+    
+    <select id="selectProductByItemid" parameterType="java.lang.String" resultType="com.lyz.user.bean.Product">
+     	 select * from product p,orderitem oi where oi.itemid=#{itemid} and oi.pid=p.pid
+    </select>
+    
+   <!--  <select id="getProductCommt" resultType="com.lyz.user.bean.Comment" parameterType="java.lang.Integer">
+        select * from comment c where c.pid=#{pid}
+    </select> -->
+    <update id="updateProduct" parameterType="com.lyz.user.bean.Product">
+        update product set pname=#{pname},marketPrice=#{marketPrice},shopPrice=#{shopPrice},
+        pimage=#{pimage}, pdate=#{pdate},isHot=#{isHot},pdesc=#{pdesc},pflag=#{pflag},sales=#{sales},
+        stock=#{stock} where pid=#{pid}
+        
+    </update>
 </mapper>

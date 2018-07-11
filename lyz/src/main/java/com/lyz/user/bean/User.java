@@ -1,26 +1,20 @@
 package com.lyz.user.bean;
 
 import java.io.Serializable;
+import java.util.List;
 
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 
-/**
- * 用户实体类
- * @author liuyazhuang
- *
- */
+
 @JsonSerialize
 @JsonNaming(PropertyNamingStrategy.LowerCaseWithUnderscoresStrategy.class) 
 public class User implements Serializable{
+	
 	private static final long serialVersionUID = 1332643889208978231L;
 	
-	/**
-	 * id
-	 */
-//	private Integer uid;
 	private String uid;
 	
 	private String username;
@@ -30,6 +24,8 @@ public class User implements Serializable{
 	private long telephone;
 	private String code;
 	private int state;
+	private List<Address> addresses ;
+	private List<Comment> comments;
 	
 	public User(){
 		super();
@@ -99,12 +95,41 @@ public class User implements Serializable{
 		this.telephone = telephone;
 	}
 
+	public List<Address> getAddresses() {
+		return addresses;
+	}
+
+	public void setAddresses(List<Address> addresses) {
+		this.addresses = addresses;
+	}
+	
+	public Address getDeafaultAddress() {
+		if (addresses==null || addresses.size()==0) {
+			return null;
+		}
+		for (Address address:addresses) {
+			if (address.getIsDefault()==1) {
+				return address;
+			} 
+		}
+		return null;
+	}
+	
+	
+	public List<Comment> getComments() {
+		return comments;
+	}
+
+	public void setComments(List<Comment> comments) {
+		this.comments = comments;
+	}
+
 	@Override
 	public String toString() {
 		return "User [uid=" + uid + ", username=" + username + ", password="
 				+ password + ", name=" + name + ", email=" + email
 				+ ", telephone=" + telephone + ", code=" + code + ", state="
-				+ state + "]";
+				+ state + ", addresses=" + addresses + "]";
 	}
 	
 }

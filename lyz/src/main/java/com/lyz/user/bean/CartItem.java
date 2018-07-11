@@ -3,7 +3,8 @@ package com.lyz.user.bean;
 public class CartItem {
 
 	private Product product;
-//	private Double subtotal;
+
+	private Double subtotal;
 	private Integer count;
 
 	public CartItem(Product product, Integer count) {

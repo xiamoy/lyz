@@ -1,10 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.lyz.user.dao.UserDao" >
+    <resultMap type="com.lyz.user.bean.User" id="UserResult">
+        <id column="uid" property="uid"/>
+        <collection property="addresses" column="uid" ofType="com.lyz.user.bean.Address"
+             javaType="ArrayList"   select="com.lyz.user.dao.AddressDao.findUsersAddr" />
+    </resultMap>
 
-    <select id="findUser" resultType="com.lyz.user.bean.User" >
+    <select id="findUser" resultMap="UserResult" >
         select * from user u where u.username=#{0} and u.password=#{1}
     </select>
+    
+    <select id="getUserById" resultType="com.lyz.user.bean.User"  parameterType="java.lang.String">
+        select * from user u where u.uid=#{uid}
+    </select>
+    
     <!-- 插入一条用户记录 -->
     <insert id="saveUser" parameterType="com.lyz.user.bean.User">
     	insert into user (uid,username,password,name, email,telephone)
@@ -23,11 +33,12 @@
     </select>
     
     <!-- 重命名用户 -->  
-    <update id="rename" parameterType="com.lyz.user.bean.User">
-    	update user set name = #{name} where username = #{username}
+    <update id="resetUser" parameterType="com.lyz.user.bean.User">
+    	update user set name = #{name}, username = #{username},
+    			telephone=#{telephone},email=#{email},password=#{password} where uid=#{uid}
     </update>  
     
-    <!-- 删除一个城市记录 -->  
+    <!-- 删除一个记录 -->  
     <delete id="deleteByName" parameterType="java.lang.String">  
         delete from user where username = #{username}
     </delete>  

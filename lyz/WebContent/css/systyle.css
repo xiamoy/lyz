@@ -11,7 +11,7 @@
 
 .m-userinfo .s-name {margin-top: 6px;display: block; color: #fff;line-height: 23px;}
 .s-prestige{ line-height:23px; padding:0px 5px;background:#F4F4F4;}
-.vip1{margin-left: 5px;display: inline-block;width: 14px;height: 14px;background:url(../images/%E5%9B%BE%E6%A0%87.png); background-position:-230px -505px;}
+.vip1{margin-left: 5px;display: inline-block;width: 14px;height: 14px;background:url(../images/tubiao.png); background-position:-230px -505px;}
 a.i-trigger { cursor: pointer;position: relative; z-index: 2;display: block; padding-top: 10px; color: #fff; text-align: center;}
 
 
@@ -149,8 +149,8 @@ a em.m-num { margin-left: 4px;color: #F40;}
 .wrap-list {width:80%;}
 /*右边栏*/
 .wrap-right{ display:block;width:20%;float:left; margin-left:-20%; padding:0px 10px;}
-.i-history-trigger { background:url(../images/%E5%9B%BE%E6%A0%87.png);background-position: -33px -22px;left: 0px;}
-.i-setting-trigger { background:url(../images/%E5%9B%BE%E6%A0%87.png);background-position: -90px -22px;right: 0px;}
+.i-history-trigger { background:url(../images/tubiao.png);background-position: -33px -22px;left: 0px;}
+.i-setting-trigger { background:url(../images/tubiao.png);background-position: -90px -22px;right: 0px;}
 
  /*日历*/
 .day-list .s-bar{font-size: 15px; text-align: center;background:#f69 none repeat scroll 0% 0%;margin:0px ;color: #fff;}

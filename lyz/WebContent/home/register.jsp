@@ -77,7 +77,7 @@
 								</div>
 				                 <div class="user-phone">
 									    <label for="phone"><i class="am-icon-mobile-phone am-icon-md"></i></label>
-									    <input type="tel" name="phone" id="phone" placeholder="请输入手机号">
+									    <input type="text" name="phone" id="phone" placeholder="请输入手机号">
 				                 </div>	
 				                 
 				                 <!-- TODO register mobile phone -->																		

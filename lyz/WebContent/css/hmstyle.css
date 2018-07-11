@@ -88,7 +88,7 @@ text-align: center;float:none}
 .row li{width: 50%;float: left;}
 /*秒杀*/
 .sale {background: #ffd800;padding: 0px 2px 4px 2px;}
-.sale-item{padding: 0px 2px;}
+.sale-item{padding: 0px 2px;border-top: #dd514c 2px solid;}
 .sale-item .s-img,.sale-item .s-info{background:#fff ;padding:10px 2px ;}
 /*时间*/
 .sale-mt{overflow: hidden;background:#ffd800 ;margin-top:10px ;}

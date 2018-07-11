@@ -13,6 +13,7 @@
 	<context:component-scan base-package="com.lyz.*.service.*" />
 	<context:component-scan base-package="com.lyz.cache.redis" />
 	<!-- class annotation related... end -->
+	
 	<context:annotation-config />
     <!-- mybatis related... start -->
 	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
@@ -40,7 +41,10 @@
 	</bean>
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<property name="configLocation" value="/WEB-INF/classes/mybatis-config.xml" />
+		<!-- <property name="configLocation" value="/WEB-INF/classes/mybatis-config.xml" /> -->
+		
+		<property name="configLocation" value="classpath:mybatis-config.xml" />
+		
 		<!-- 扫描entity包 使用别名 -->
 		<property name="typeAliasesPackage" value="com.lyz.user.bean.User" />
 		<!-- 扫描sql配置文件:mapper需要的xml文件 -->

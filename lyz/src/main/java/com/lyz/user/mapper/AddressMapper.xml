@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lyz.user.dao.AddressDao" >
+
+    <select id="findUsersAddr" resultType="com.lyz.user.bean.Address" >
+        select * from address a where a.uid=#{uid} 
+    </select>
+    <insert id="addAddress" parameterType="com.lyz.user.bean.Address" >
+        
+        insert into address(aid,uid,receiver,telephone,address,isDefault) 
+        values(#{aid},#{uid},#{receiver},#{telephone},#{address},#{isDefault})
+    </insert>
+    
+    <select id="findAddressById" resultType="com.lyz.user.bean.Address" parameterType="java.lang.String">
+        select * from address a where a.aid=#{aid}
+    </select>
+  
+    <update id="updateAddress" parameterType="com.lyz.user.bean.Address">
+        update address set receiver=#{receiver},telephone=#{telephone},
+        	address=#{address},isDefault=#{isDefault} where aid=#{aid}
+    </update>
+    <delete id="deleteAddress" parameterType="java.lang.String">
+        delete from address where aid=#{aid}
+    </delete>
+</mapper>

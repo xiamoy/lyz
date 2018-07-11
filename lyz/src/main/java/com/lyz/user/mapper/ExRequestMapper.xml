@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lyz.user.dao.ExRequestDao" >
+    
+    <resultMap type="com.lyz.user.bean.ExRequest" id="ExRequestResult">
+        <id column="crid" property="crid" jdbcType="VARCHAR"/>
+        <result column="state" property="state" jdbcType="INTEGER"/>
+        <result column="createtime" property="createtime" jdbcType="DATE"/>
+        <association property="srcGoods" column="srcgid" javaType="com.lyz.user.bean.ExGoods" 
+            select="com.lyz.user.dao.ExGoodsDao.findGoodsById" />
+        <association property="destGoods" column="desgid" javaType="com.lyz.user.bean.ExGoods" 
+            select="com.lyz.user.dao.ExGoodsDao.findGoodsById" />
+    </resultMap>
+    
+    <select id="findSendToMeRequests" parameterType="java.lang.String" resultMap="ExRequestResult">
+        select * from exrequest where desuid=#{uid}
+    </select>
+    <select id="findMySendRequest" parameterType="java.lang.String" resultMap="ExRequestResult">
+        select * from exrequest where srcuid=#{uid}
+    </select>
+    
+    <insert id="saveChangeRequest" parameterType="com.lyz.user.bean.ExRequest">
+        insert into exrequest(crid,srcuid,desuid,srcgid,desgid,createtime,state)
+        	values(#{crid},#{srcGoods.user.uid},#{destGoods.user.uid},#{srcGoods.cgid},
+        	#{destGoods.cgid},#{createtime},#{state})
+    </insert>
+    
+    <delete id="deleteRequest" parameterType="java.lang.String">
+        delete from exrequest where crid=#{crid}
+    </delete>
+    
+    <update id="updateRequest" parameterType="com.lyz.user.bean.ExRequest">
+        update exrequest set srcuid=#{srcGoods.user.uid},desuid=#{destGoods.user.uid},
+        	srcgid=#{srcGoods.cgid},desgid=#{destGoods.cgid},createtime=#{createtime},
+        	state=#{state} where crid=#{crid}
+    </update>
+    
+   <select id="findRequestById" resultMap="ExRequestResult"  parameterType="java.lang.String">
+       select * from exrequest where crid=#{crid}
+   </select>
+   
+   <select id="findGoodsRequest" resultType="com.lyz.user.bean.ExRequest" parameterType="java.lang.Integer">
+       select * from exrequest where desgid=#{cgid}
+   </select>
+   
+   
+</mapper>

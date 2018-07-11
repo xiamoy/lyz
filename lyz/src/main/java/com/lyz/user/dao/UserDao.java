@@ -1,14 +1,10 @@
-package com.lyz.user.dao;
+﻿package com.lyz.user.dao;
 
 import java.util.List;
 
 import com.lyz.user.bean.User;
 
-/**
- * 用户dao接口
- * @author liuyazhuang
- *
- */
+
 public interface UserDao {
 	
 	User findUser(String username,String password);
@@ -32,11 +28,13 @@ public interface UserDao {
 	 */
 	User getByName(String username);
 	
+	User getUserById(String uid);
+	
 	/**
 	 * 更新用户的名称
 	 * @param user
 	 */
-	void rename(User user);
+	void resetUser(User user);
 	
 	/**
 	 * 根据username删除指定的用户

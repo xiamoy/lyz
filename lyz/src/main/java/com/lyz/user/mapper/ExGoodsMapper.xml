@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lyz.user.dao.ExGoodsDao" >
+    
+    <resultMap type="com.lyz.user.bean.ExGoods" id="ExGoodsResult">
+        <id column="cgid" property="cgid" jdbcType="INTEGER"/>
+        <association property="user" column="uid" javaType="com.lyz.user.bean.User" 
+            select="com.lyz.user.dao.UserDao.getUserById" />
+        <collection property="changeRequests" column="cgid" javaType="ArrayList"
+            	ofType="com.lyz.user.bean.ExRequest"	 select="com.lyz.user.dao.ExRequestDao.findGoodsRequest" />
+    </resultMap>
+    
+   <select id="findGoodsById" resultMap="ExGoodsResult" parameterType="java.lang.Integer">
+        select * from exgoods e where e.cgid=#{cgid}
+    </select>
+   
+   <insert id="addNewGoods" parameterType="com.lyz.user.bean.ExGoods" useGeneratedKeys="true" keyProperty="cgid"> 
+       insert into exgoods(gname,price,gimage,gdesc,uid) values(#{gname},
+       			#{price},#{gimage},#{gdesc},#{user.uid})
+   </insert>
+   
+   <update id="updateGoods" parameterType="com.lyz.user.bean.ExGoods">
+       update exgoods set gname=#{gname},price=#{price},gimage=#{gimage},
+       		gdesc=#{gdesc},uid=#{user.uid} where cgid=#{cgid}
+   </update>
+   
+   <select id="findUsersGoods" parameterType="java.lang.String" resultMap="ExGoodsResult">
+       select * from exgoods where uid=#{uid}
+   </select>
+   
+   <select id="getTopGoods" resultMap="ExGoodsResult">
+       select * from exgoods order by price 
+   </select>
+   
+   <delete id="deleteGoodsById" parameterType="java.lang.Integer">
+       delete from exgoods where cgid=#{cgid}
+   </delete>
+   
+</mapper>

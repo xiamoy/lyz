@@ -178,6 +178,7 @@ aside a{display: block;overflow: hidden;text-decoration: none;line-height: 28px;
 aside ul li{text-align: center;}
 aside ul li.active a{color: #F69}
 li.person{border-bottom:1px solid #F5F8FA ;padding-bottom:10px;padding-top: 10px;}
+
 .person ul{padding-left:6px; border:none; padding-top:0px; padding-bottom:0px; margin:0px auto;font-size:12px;}
 .person ul li a{color: #666;}
 /*主题*/

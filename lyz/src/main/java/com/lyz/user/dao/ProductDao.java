@@ -13,4 +13,7 @@ public interface ProductDao {
 	List<Product> findProductByCatg(String cid);
 	Product findProductById(int pid);
 	List<Product> getTopSaleProduct(/*@Param("start") int start,*/ @Param("limit") int limit);
+	List<Product> searchKeyProduct(@Param("keyword") String keyword);
+	List<Product> selectProductByItemid(String itemid);
+	void updateProduct(Product product);
 }

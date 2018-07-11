@@ -1,11 +1,10 @@
 package com.lyz.user.service.impl;
 
-import java.util.List;
-
 import javax.annotation.Resource;
 
-import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cache.annotation.Caching;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,11 +15,6 @@ import com.lyz.user.service.UserService;
 
 
 
-/**
- * UserService实现类
- * @author liuyazhuang
- *
- */
 @Service
 @Transactional(propagation=Propagation.REQUIRED, rollbackFor=Exception.class)
 public class UserServiceImpl implements UserService {
@@ -29,39 +23,59 @@ public class UserServiceImpl implements UserService {
 	private UserDao mUserDao;
 	
 	@Override
-	@CacheEvict(value = { "saveUser"}, allEntries = true)
-	public void saveUser(User user) {
+	@Caching(
+	   	put={
+	   		@CachePut(value="_userCache",key="#user.uid"),
+	   		@CachePut(value="_userCache",key="#user.username.concat(#user.password)")
+	   	}
+	)
+	public User saveUser(User user) {
 		mUserDao.saveUser(user);
+		return user;
 	}
 	
 
-	@Override
-	@Cacheable("getAllUser")
+/*	@Override
+	@Cacheable("_getAllUser")
 	public List<User> getAllUser() {
 		return mUserDao.getAllUser();
-	}
+	}*/
 
-	@Override
-	@Cacheable("getUserById")
+	/*@Override
+	@Cacheable(value="_userCache",key="#username")
 	public User getUserByName(String username) {
 		return mUserDao.getByName(username);
-	}
+	}*/
 
 	@Override
-	@CacheEvict(value = { "getAllUser", "getUserByName" }, allEntries = true)
-	public void renameUser(String name, String username) {
-		mUserDao.rename(new User(username, name));
+	@Caching(
+		put={
+	   		@CachePut(value="_userCache",key="#user.uid"),
+	   		@CachePut(value="_userCache",key="#user.username.concat(#user.password)")
+	   	}
+		)
+	public User resetUser(String uid, User user) {
+		mUserDao.resetUser(user);
+		return user;
 	}
 
-	@Override
+	/*@Override
 	@CacheEvict(value = { "getAllUser", "getUserById" }, allEntries = true)
 	public void deleteUserByName(String username) {
 		mUserDao.deleteByName(username);
-	}
+	}*/
 
 	@Override
+	@Cacheable(value="_userCache",key="#username.concat(#password)")
 	public User findUser(String username, String password) {
 		return mUserDao.findUser(username, password);
+	}
+
+
+	@Override
+	@Cacheable(value="_userCache",key="#uid")
+	public User getUserById(String uid) {
+		return mUserDao.getUserById(uid);
 	}
 
 }

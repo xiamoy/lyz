@@ -1,15 +1,22 @@
 package com.lyz.user.bean;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.io.Serializable;
 
-public class Comment implements Comparable{
+import org.codehaus.jackson.map.annotate.JsonSerialize;
 
+import com.fasterxml.jackson.databind.PropertyNamingStrategy;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
+
+@JsonSerialize
+@JsonNaming(PropertyNamingStrategy.LowerCaseWithUnderscoresStrategy.class) 
+public class Comment implements Serializable{
+	
+	private static final long serialVersionUID = -5164374546363204351L;
 	private String cid;
 	private String poster;
 	private String description;
-	private int pid;
+
+	private Product product;
 	private String postdate;
 	private Integer level;
 	
@@ -31,12 +38,14 @@ public class Comment implements Comparable{
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public int getPid() {
-		return pid;
-	}
-	public void setPid(int pid) {
-		this.pid = pid;
-	}
+	
+//	public int getPid() {
+//		return pid;
+//	}
+//	public void setPid(int pid) {
+//		this.pid = pid;
+//	}
+	
 	public String getPostdate() {
 		return postdate;
 	}
@@ -51,28 +60,36 @@ public class Comment implements Comparable{
 	public void setLevel(int level){
 		this.level = level;
 	}
-	@Override
-	public int compareTo(Object o) {
-		if (o instanceof Comment) {
-			Comment comment = (Comment)o;
-			  SimpleDateFormat temp=new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");  
-			  try {
-				Date thisDate = temp.parse(this.postdate);
-				Date otherDate = temp.parse(comment.getPostdate());
-				System.out.println("this:"+thisDate+";"+otherDate);
-				return thisDate.compareTo(otherDate);
-			} catch (ParseException e) {
-				return 0;
-			}
- //			return this.level.compareTo(comment.getLevel());
-		}
-		return 0;
-	}
+	
+//	@Override
+//	public int compareTo(Object o) {
+//		if (o instanceof Comment) {
+//			Comment comment = (Comment)o;
+//			  SimpleDateFormat temp=new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");  
+//			  try {
+//				Date thisDate = temp.parse(this.postdate);
+//				Date otherDate = temp.parse(comment.getPostdate());
+//				System.out.println("this:"+thisDate+";"+otherDate);
+//				return thisDate.compareTo(otherDate);
+//			} catch (ParseException e) {
+//				return 0;
+//			}
+// //			return this.level.compareTo(comment.getLevel());
+//		}
+//		return 0;
+//	}
+	
 	@Override
 	public String toString() {
 		return "Comment [cid=" + cid + ", poster=" + poster + ", description="
-				+ description + ", pid=" + pid + ", postdate=" + postdate
+				+ description + ", product=" + product + ", postdate=" + postdate
 				+ ", level=" + level + "]";
+	}
+	public Product getProduct() {
+		return product;
+	}
+	public void setProduct(Product product) {
+		this.product = product;
 	}
 	
 }

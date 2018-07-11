@@ -24,4 +24,19 @@ public class CommentServiceImpl implements CommentService {
 		return mCommentDao.findCommentsByPid(pid);
 	}
 
+	@Override
+	public List<Comment> getAllUserCommts(String uid) {
+		return mCommentDao.getAllUserCommts(uid);
+	}
+
+	@Override
+	public void addComment(Comment comment) {
+		mCommentDao.addComment(comment);
+	}
+
+	@Override
+	public void deleteCommentById(String cid) {
+		mCommentDao.deleteCommentById(cid);
+	}
+
 }

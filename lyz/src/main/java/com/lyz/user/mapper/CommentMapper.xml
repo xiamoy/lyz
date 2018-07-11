@@ -2,8 +2,29 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.lyz.user.dao.CommentDao" >
 
-    <select id="findCommentsByPid" resultType="com.lyz.user.bean.Comment" >
+    <resultMap type="com.lyz.user.bean.Comment" id="CommentResult">
+        <id property="cid" column="cid"  jdbcType="VARCHAR" />
+        <!-- <result property="poster" column="poster" jdbcType="VARCHAR"/>
+        <result property="description" column="description" jdbcType="VARCHAR"/>
+        <result property="postdate" column="postdate" jdbcType="DATE"/> -->
+        <association property="product" column="pid" select="com.lyz.user.dao.ProductDao.findProductById" />
+    </resultMap>
+    
+    <select id="findCommentsByPid" resultType="com.lyz.user.bean.Comment" parameterType="java.lang.Integer">
         select * from comment c where c.pid=#{pid} order by postdate desc
     </select>
+    
+    <select id="getAllUserCommts" resultMap="CommentResult" parameterType="java.lang.String">
+        select * from comment c,user u where u.uid=#{uid} and c.poster=u.username order by postdate desc
+    </select>
+    
+    <insert id="addComment" parameterType="com.lyz.user.bean.Comment">
+        insert into comment(cid,poster,description,pid,postdate,level) 
+        		values(#{cid},#{poster},#{description},#{product.pid},#{postdate},#{level})
+    </insert>
+    
+    <delete id="deleteCommentById" parameterType="java.lang.String">
+        delete from comment where cid=#{cid}
+    </delete>
   
 </mapper>

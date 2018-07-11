@@ -15,7 +15,6 @@ import org.springframework.data.redis.core.RedisTemplate;
 
 /**
  * 以Spring与配置文件来管理的redis缓存配置类
- * @author liuyazhuang
  *
  */
 @Configuration
@@ -51,7 +50,7 @@ public class RedisCacheConfig extends CachingConfigurerSupport {
 	}
 	
 	@Bean
-	public KeyGenerator customKeyGenerator() {
+	public KeyGenerator keyGenerator() {
 		return new KeyGenerator() {
 			@Override
 			public Object generate(Object o, Method method, Object... objects) {
